@@ -15,12 +15,13 @@ export default class App extends React.Component{
     render() {
         var textItems = [];
         for (var i = 0; i < this.state.itemArray.length; i++) {
+            var key = i;
             var val = {
                 date: this.state.itemArray[i].date,
                 item: this.state.itemArray[i].text
             }
             var donothing = function() {};
-            var itemComponent = <Item key={i} keyval={i} val={val} deletemethod={donothing}/>
+            var itemComponent = <Item key={i} keyval={i} val={val} deletemethod={() => this.deleteItem(key)}/>
             textItems.push(itemComponent);
         }
 
@@ -68,6 +69,12 @@ export default class App extends React.Component{
             this.setState({newItemInput:''});
         }
         console.log('-addItem');
+    }
+
+    deleteItem(index) {
+        var currentArray = this.state.itemArray;
+        currentArray.splice(index, 1);
+        this.setState({itemArray: currentArray});
     }
 }
 
