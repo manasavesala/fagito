@@ -3,6 +3,7 @@ import React from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import Item from './Item'
 import { isFlowPredicate } from '@babel/types';
+import ImageUpload from '../components/ImageUpload';
 
 export default class App extends React.Component{
         constructor(props){
@@ -35,7 +36,8 @@ export default class App extends React.Component{
                 <View style={styles.header}>
                     <Text style={styles.headerText}>Welcome to Fagito</Text>
                 </View>
-                <Text key='head'>List of Items:</Text>
+                <ImageUpload />
+                <Text key='head' style={styles.listOfItemsText}>List of Items:</Text>
                 <ScrollView style={styles.scrollContainer}>
                     {textItems}
                 </ScrollView>
@@ -105,6 +107,7 @@ const styles = StyleSheet.create({
         left:0,
         right:0,
         zIndex:10,
+        paddingTop:150
     },
     textinput:{
         alignSelf:'stretch',
@@ -130,6 +133,9 @@ const styles = StyleSheet.create({
     addButtonText:{
         color:'#fff',
         fontSize:24
-    }
+    },
+    // listOfItemsText:{
+    //     paddingBottom:100
+    // }
 
 });
